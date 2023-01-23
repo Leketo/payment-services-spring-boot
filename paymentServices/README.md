@@ -31,20 +31,4 @@ Para compilar y ejecutar el proyecto, siga estos pasos:
 
 -> La aplicación estará disponible en http://localhost:8080.
 
-## Cliente 1: App Mobile
-
-En este diagrama de ejemplo de utilizara como el ciclo de vida de la API 
-
-![Alt text](/paymentServices/src/main/resources/static/client.png?raw=true "App Movil")
-
-
-
-
-
-##ERD
-
-![Alt text](/paymentServices/src/main/resources/static/erd.png?raw=true "ERD")
-
-##Entidades
-
-* Usuario: Accede al sistema mediante `email` y `password` solo con ROL = CLIENTE
+![Alt text](/paymentServices/paymentServices/src/main/resources/static/erd.png?raw=true "Title")
