@@ -25,7 +25,7 @@ Para compilar y ejecutar el proyecto, siga estos pasos:
 
 * Clone el repositorio: `git clone https://github.com/Leketo/paymentServices.git`
 * Navegue al directorio del proyecto: `cd paymentServices/paymentServices`
-* Crear base de datos en una base de datos postgres llamado `pago_servicios`, verificar dentro del proyecto el archivo `application.yml` los parametros de conexion esten apuntando de forma correcta
+* Crear la base de datos en un db postgres llamado `pago_servicios`, verificar dentro del proyecto el archivo `application.yml` los parametros de conexion esten apuntando de forma correcta
 * Construir el proyecto: `mvn clean install`
 
 
