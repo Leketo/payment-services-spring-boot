@@ -31,4 +31,4 @@ Para compilar y ejecutar el proyecto, siga estos pasos:
 
 -> La aplicación estará disponible en http://localhost:8080.
 
-![Alt text](/paymentServices/paymentServices/src/main/resources/static/erd.png?raw=true "Title")
+![Alt text](/paymentServices/src/main/resources/static/erd.png?raw=true "Title")
