@@ -10,6 +10,9 @@ import py.com.leketo.paymentServices.config.JwtService;
 import py.com.leketo.paymentServices.exceptions.custom.EmailDuplicateException;
 import py.com.leketo.paymentServices.exceptions.enums.APIExceptionType;
 import py.com.leketo.paymentServices.exceptions.errors.APIException;
+import py.com.leketo.paymentServices.model.auth.http.BeanUserResponse;
+import py.com.leketo.paymentServices.model.servicios.entity.Servicio;
+import py.com.leketo.paymentServices.model.servicios.http.BeanServicioResponse;
 import py.com.leketo.paymentServices.model.user.Role;
 import py.com.leketo.paymentServices.model.user.User;
 import py.com.leketo.paymentServices.model.user.UserRepository;
@@ -56,5 +59,9 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
         .token(jwtToken)
         .build();
+  }
+  public BeanUserResponse findById(Integer id){
+    User user = repository.findById(id).orElse(null);;
+    return BeanUserResponse.builder().user(user).build();
   }
 }

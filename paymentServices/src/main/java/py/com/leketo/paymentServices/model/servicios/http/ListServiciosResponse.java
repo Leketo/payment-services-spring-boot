@@ -1,11 +1,10 @@
-package py.com.leketo.paymentServices.model.servicios;
+package py.com.leketo.paymentServices.model.servicios.http;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import py.com.leketo.paymentServices.model.servicios.entity.Servicio;
 
 import java.util.List;
 
@@ -13,6 +12,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiciosResponse {
+public class ListServiciosResponse {
    List<Servicio> servicios;
 }
