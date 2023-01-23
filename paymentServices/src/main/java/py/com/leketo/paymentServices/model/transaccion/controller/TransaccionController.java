@@ -32,15 +32,15 @@ public class TransaccionController {
         return ResponseEntity.ok(service.findByDateRange(begin, end, userId));
     }
 
-    @PostMapping("/pago-inicial")
-    public ResponseEntity<BeanTransaccionResponse> register(
+    @PostMapping("/registrar-pago")
+    public ResponseEntity<BeanTransaccionResponse> registrarTransaccion(
             @RequestBody RegisterRequest request
     ) throws APIException {
         return ResponseEntity.ok(service.registrarTransaccion(request));
     }
 
     @PutMapping("/{id_transaccion}/confirmar-pago")
-    public ResponseEntity<BeanTransaccionResponse> register(
+    public ResponseEntity<BeanTransaccionResponse> confirmarPago(
             @RequestBody ConfirmarPago confirmarPago,
             @PathVariable("id_transaccion") Integer idTransaccion
     ) throws APIException {
