@@ -31,10 +31,10 @@ Para compilar y ejecutar el proyecto, siga estos pasos:
 
 -> La aplicación estará disponible en http://localhost:8080.
 
-##EDR
+## EDR
 Con esta estructura se crea un flujo simpre para el pago de un servicio
 
-![Alt text](/paymentServices/paymentServices/src/main/resources/static/erd.png?raw=true "Title")
+![Alt text](/paymentServices/src/main/resources/static/erd.png?raw=true "ERd")
 
 ## Tablas
 
@@ -45,25 +45,48 @@ Con esta estructura se crea un flujo simpre para el pago de un servicio
 * Transaccion: Es esta tabla se almacena los pasos utilizados para realizar el pago `"REGISTRAR"` y `"CONFIRMAR"`
 
 ## Diseño App
-
 Este es un diseño de ejemplo donde se tomo de ejemplo para realizar el flujo desde
-
-![Alt text](/paymentServices/paymentServices/src/main/resources/static/erd.png?raw=true "Title")
+![Alt text](/paymentServices/src/main/resources/static/clirnt.png?raw=true "Title")
 
 ## Contexto Auth
 * 1- Registro de usuario: Registra un nuevo usuario
-* 
+![Alt text](/paymentServices/src/main/resources/static/registrarse.png?raw=true "Title")
+
+```
+curl --location --request POST 'localhost:8080/api/v1/auth/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "email": "leketo@leketo.com",
+  "numeroDocumento": "252222",
+  "nombre": "Marcelo Pope",
+  "password": "test_f2ccf0f4cb53",
+  "pin": "7854"
+}'
+```
+
 * 2- Login: Inicio de sesion al sistema mediante `email` y `password`
+![Alt text](/paymentServices/src/main/resources/static/login.png?raw=true "Title")
+```
+curl --location --request POST 'localhost:8080/api/v1/auth/authenticate' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "email": "lindo@lekto.com",
+  "password": "test_f2ccf0f4cb52"
+}'
+
+```
 ## Contexto Pago
 En la imagen anterior veremos las pantallas que interactuan para realizar un pago 
 
-Pantalla 1: Se visualiza los diferentes servicios disponibles.
-Pantalla 2: Se visualiza el servicio filtrado por nombre. Tambien se puede filtrar por tipo, PUBLICO o PRIVADO.
-Pantalla 3: Una vez seleccionado el servicio que se va a pagar se procese a buscar el documento asociado a el.
-Pantalla 4: Si se encontro la deuda asociado el numero de referencia se selecciona y ve en la pantalla. Esta disponible para ingresar el monto. Valida que el usuario posea saldo y crea la transaccion en estado 'PENDIENTE'.
-Pantalla 5: En este punto se tiene la transaccion se envia en conjunto con el PIN. Se procecede a 1- Confirmar la transacccion, 2- Actualizar el saldo de la cuenta del cliente, 3-Cancelar la deuda
-Pantalla 6: Mensaje de proceso exitoso
-Pantalla 7: Historial de transacciones
+* Pantalla 1: Se visualiza los diferentes servicios disponibles.
+
+![Alt text](/paymentServices/src/main/resources/static/erd.png?raw=true "Title")
+* Pantalla 2: Se visualiza el servicio filtrado por nombre. Tambien se puede filtrar por tipo, PUBLICO o PRIVADO.
+* Pantalla 3: Una vez seleccionado el servicio que se va a pagar se procese a buscar el documento asociado a el.
+* Pantalla 4: Si se encontro la deuda asociado el numero de referencia se selecciona y ve en la pantalla. Esta disponible para ingresar el monto. Valida que el usuario * posea saldo y crea la transaccion en estado 'PENDIENTE'.
+* Pantalla 5: En este punto se tiene la transaccion se envia en conjunto con el PIN. Se procecede a 1- Confirmar la transacccion, 2- Actualizar el saldo de la cuenta del cliente, 3-Cancelar la deuda
+* Pantalla 6: Mensaje de proceso exitoso
+* Pantalla 7: Historial de transacciones
 
 ##Enpoint
 * 1- Registrar Usuario
