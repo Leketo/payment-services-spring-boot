@@ -111,8 +111,34 @@ curl --location --request GET 'localhost:8080/api/v1/servicios/{:name}/find_by_n
 ### Pantalla 3: Una vez seleccionado el servicio que se va a pagar se procese a buscar el documento asociado a el.
 <img src="/paymentServices/src/main/resources/static/nro.png" width="300"/>
 
-### Pantalla 4: Si se encontro la deuda asociado el numero de referencia se selecciona y ve en la pantalla. Esta disponible para ingresar el monto. Valida que el usuario * posea saldo y crea la transaccion en estado 'PENDIENTE'.
+#### Obtener Deuda By Nro Referencia
+```
+curl --location --request GET 'localhost:8080/api/v1/deudas/{:servicio_id}/find_by_numero_referencia/{:nro_referencia}' \
+--header 'Authorization: Bearer {token_jwt}'
+```
+
+### Pantalla 4: Si se encontro la deuda asociado el numero de referencia se selecciona y ve en la pantalla. Esta disponible para ingresar el monto. Valida que el usuario posea saldo y crea la transaccion en estado 'PENDIENTE'.
 <img src="/paymentServices/src/main/resources/static/deuda.png" width="300"/>
+
+#### Obtener Deuda By Nro Referencia
+```
+curl --location --request POST 'localhost:8080/api/v1/transacciones/registrar-pago' \
+--header 'Authorization: Bearer {token_jwt}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"deuda" : {
+		 "id" : 252
+	},
+	"usuario" : {
+		 "id" : 1
+	},
+	"cuenta" : {
+		"id" : 2
+	},
+	"monto" : 1000000,
+	"nroDocumentoTitular" : "5144525"
+}'
+```
 
 ### Pantalla 5: En este punto se tiene la transaccion se envia en conjunto con el PIN. Se procecede a 
  * 1- Confirmar la transacccion 
@@ -121,9 +147,25 @@ curl --location --request GET 'localhost:8080/api/v1/servicios/{:name}/find_by_n
  
 <img src="/paymentServices/src/main/resources/static/transaccion.png" width="300"/>
 
+####Confirmar Pago
+```
+curl --location --request PUT 'localhost:8080/api/v1/transacciones/{:id_transaccion}/confirmar-pago' \
+--header 'Authorization: Bearer {token_jwt}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "pin": "7854"
+}'
+```
+
 ### Pantalla 6: Mensaje de proceso exitoso
 <img src="/paymentServices/src/main/resources/static/ok.png" width="300"/>
 
 ### Pantalla 7: Historial de transacciones
 <img src="/paymentServices/src/main/resources/static/lista.png" width="300"/>
+
+#### Lista de transaccion de un usuario determinado por rango de fecha
+```
+curl --location --request GET 'localhost:8080/api/v1/transacciones/1/find_by_date?begin=2023-01-22&end=2023-01-23' \
+--header 'Authorization: Bearer {token_jwt}'
+```
 
