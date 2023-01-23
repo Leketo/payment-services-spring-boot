@@ -43,7 +43,10 @@ Con esta estructura se crea un flujo simpre para el pago de un servicio
 * `Deuda Cliente:` Esta tabla es la cuenta que cada cliente posee cn cada entidad, que en la practica esto se encuentra en las bases de datos de cada entidad y los provee por API pero a fines de practica lo cargamos aqui.
 * `Transaccion:` Es esta tabla se almacena los pasos utilizados para realizar el pago `"REGISTRAR"` y `"CONFIRMAR"`
 
-# Diseño App
+# Flujo
+<img src="/paymentServices/src/main/resources/static/secuence.png" width="800"/>
+
+# Diseño App Client
 Este es un diseño de ejemplo donde se toma para realizar los pasos de la operativa de un pago de servicio
 
 <img src="/paymentServices/src/main/resources/static/client.png" width="800"/>
