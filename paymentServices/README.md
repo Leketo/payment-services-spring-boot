@@ -97,8 +97,6 @@ curl --location --request GET 'localhost:8080/api/v1/servicios/{:id}/find_by_id'
 --header 'Authorization: Bearer {token_jwt}'
 ```
 
-
-
 ### Pantalla 2: Se visualiza el servicio filtrado por nombre. Tambien se puede filtrar por tipo, PUBLICO o PRIVADO.
 <img src="/paymentServices/src/main/resources/static/seleccion.png" width="300"/>
 
@@ -140,14 +138,15 @@ curl --location --request POST 'localhost:8080/api/v1/transacciones/registrar-pa
 }'
 ```
 
-### Pantalla 5: En este punto se tiene la transaccion se envia en conjunto con el PIN. Se procecede a 
- * 1- Confirmar la transacccion 
- * 2- Actualizar el saldo de la cuenta del cliente
- * 3-Cancelar la deuda
+### Pantalla 5: En este punto se debe obtener el identificador de la trnasaccion y se envia en conjunto con el PIN. Se procecede a 
+ * 1- Validar el PIN
+ * 2- Confirmar la transacccion 
+ * 3- Actualizar el saldo de la cuenta del cliente
+ * 4- Cancelar la deuda
  
 <img src="/paymentServices/src/main/resources/static/transaccion.png" width="300"/>
 
-####Confirmar Pago
+#### Confirmar Pago
 ```
 curl --location --request PUT 'localhost:8080/api/v1/transacciones/{:id_transaccion}/confirmar-pago' \
 --header 'Authorization: Bearer {token_jwt}' \
@@ -168,4 +167,17 @@ curl --location --request PUT 'localhost:8080/api/v1/transacciones/{:id_transacc
 curl --location --request GET 'localhost:8080/api/v1/transacciones/1/find_by_date?begin=2023-01-22&end=2023-01-23' \
 --header 'Authorization: Bearer {token_jwt}'
 ```
+
+## Carga de datos inicial
+##### Dentro del directorio `src/main/resources/postman/`se encuentra los archivos de `environment` y `coleccion` que deben ser importados en el Postman para realizar la carga inicial de datos.
+
+* 1- Auth/Registrar Usuario
+* 2- Auth/Login
+* 3- Servicios/Registrar Servicios
+* 4- Cuenta/Registrar Cuenta (debe asignarle el id del usuario creado en el paso 1)* 5- Deuda/Registrar Deuda (debe asignar el id de servicio creado en el paso 3)
+
+# T0DO
+* 1- Test Unitarios
+* 2- Despliegue en contenedores (Docker)
+* 3- Integracion con una app (Flutter/React Native)
 
