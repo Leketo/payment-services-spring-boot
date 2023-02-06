@@ -1,9 +1,10 @@
 # Pago de Servicio, Spring Boot 3.0 Security y JWT
-Este proyecto demuestra la implementaciónde  un proyecto de Pago de Servicios. Incluye las siguientes características:
+Este proyecto demuestra la implementación de un proceso de Pago de Servicios. Incluye las siguientes características:
 
 ## Características
 * Registro de usuario e inicio de sesión con autenticación JWT
 * Cifrado de contraseña usando BCrypt
+* Alta, baja, modificacion de clientes
 * Creacion de deudas asociado a un cliente con un numero de referencia o numero de documento
 
 ## Tecnologías
